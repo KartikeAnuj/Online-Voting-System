@@ -3,8 +3,6 @@ name: Deploy to Heroku
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   deploy:
@@ -35,3 +33,5 @@ jobs:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: "online-voting-system-app"
         heroku_email: "kartike@example.com"
+        appdir: "."
+        procfile: "Procfile"
