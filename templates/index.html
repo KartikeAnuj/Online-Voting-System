@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}Online Voting System{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="row justify-content-center mb-5">
+    <div class="col-lg-8 text-center text-white">
+        <h1 class="display-4 fw-bold mb-3">
+            <i class="bi bi-ballot-check me-3"></i>Online Voting System
+        </h1>
+        <p class="lead mb-4">Secure, transparent, and efficient digital voting platform</p>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <span class="badge bg-light text-dark px-3 py-2">
+                        <i class="bi bi-shield-check me-1"></i>Secure
+                    </span>
+                    <span class="badge bg-light text-dark px-3 py-2">
+                        <i class="bi bi-eye me-1"></i>Transparent
+                    </span>
+                    <span class="badge bg-light text-dark px-3 py-2">
+                        <i class="bi bi-speedometer2 me-1"></i>Fast
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <!-- Voter Login Card -->
+        <div class="card mb-4">
+            <div class="card-header text-center">
+                <h4 class="mb-0"><i class="bi bi-person-circle me-2"></i>Voter Portal</h4>
+            </div>
+            <div class="card-body p-4">
+                <form action="{{ url_for('login') }}" method="POST">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Login to Vote
+                        </button>
+                    </div>
+                </form>
+                <hr>
+                <div class="text-center">
+                    <p class="mb-3 text-muted">New to our voting system?</p>
+                    <a href="{{ url_for('register') }}" class="btn btn-outline-primary">
+                        <i class="bi bi-person-plus me-2"></i>Register as Voter
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo Credentials -->
+        <div class="card bg-light">
+            <div class="card-body text-center">
+                <h6 class="card-title text-primary">
+                    <i class="bi bi-info-circle me-2"></i>Demo Access
+                </h6>
+                <p class="mb-2"><strong>Voter:</strong> student@example.com / 1234</p>
+                <p class="mb-3"><strong>Admin:</strong> <a href="{{ url_for('admin_login_page') }}" class="text-decoration-none">Click here for admin access</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="col-md-6 col-lg-5">
+        <div class="card h-100">
+            <div class="card-header text-center">
+                <h4 class="mb-0"><i class="bi bi-star me-2"></i>System Features</h4>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="d-flex align-items-center">
+                            <div class="feature-icon me-3">
+                                <i class="bi bi-person-check-fill text-success fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Secure Registration</h6>
+                                <small class="text-muted">Easy voter registration with email verification</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex align-items-center">
+                            <div class="feature-icon me-3">
+                                <i class="bi bi-shield-lock-fill text-primary fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">One Vote Per Person</h6>
+                                <small class="text-muted">Prevents duplicate voting automatically</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex align-items-center">
+                            <div class="feature-icon me-3">
+                                <i class="bi bi-graph-up text-warning fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Real-time Results</h6>
+                                <small class="text-muted">Live vote counting and result display</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex align-items-center">
+                            <div class="feature-icon me-3">
+                                <i class="bi bi-gear-fill text-info fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Admin Dashboard</h6>
+                                <small class="text-muted">Manage candidates and monitor elections</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Stats -->
+<div class="row justify-content-center mt-5">
+    <div class="col-lg-8">
+        <div class="card bg-transparent border-0">
+            <div class="card-body text-center text-white">
+                <h5 class="mb-4">Why Choose Our Voting System?</h5>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="d-flex flex-column align-items-center">
+                            <i class="bi bi-lock-fill fs-1 mb-2"></i>
+                            <h6>Secure & Private</h6>
+                            <small>Your vote is encrypted and anonymous</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="d-flex flex-column align-items-center">
+                            <i class="bi bi-clock-fill fs-1 mb-2"></i>
+                            <h6>24/7 Available</h6>
+                            <small>Vote anytime from anywhere</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="d-flex flex-column align-items-center">
+                            <i class="bi bi-check-circle-fill fs-1 mb-2"></i>
+                            <h6>Verified Results</h6>
+                            <small>Transparent and auditable process</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

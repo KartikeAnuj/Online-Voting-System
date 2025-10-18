@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Voting - Online Voting System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card">
+            <div class="card-header text-center">
+                <h4 class="mb-0"><i class="bi bi-ballot-check me-2"></i>Cast Your Vote</h4>
+                <p class="mb-0 mt-2">Select your preferred candidate</p>
+            </div>
+            <div class="card-body p-4">
+                <form action="{{ url_for('submit_vote') }}" method="POST">
+                    {% for candidate in candidates %}
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" name="candidate" 
+                               id="candidate{{ candidate[0] }}" value="{{ candidate[0] }}" required>
+                        <label class="form-check-label d-flex align-items-center" for="candidate{{ candidate[0] }}">
+                            <div class="candidate-info ms-3">
+                                <h6 class="mb-1">{{ candidate[1] }}</h6>
+                                <small class="text-muted">Candidate ID: {{ candidate[0] }}</small>
+                            </div>
+                        </label>
+                    </div>
+                    {% if not loop.last %}
+                    <hr class="my-3">
+                    {% endif %}
+                    {% endfor %}
+                    
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            <i class="bi bi-check-circle me-2"></i>Submit Vote
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('results') }}" class="btn btn-outline-secondary">
+                        <i class="bi bi-bar-chart me-2"></i>View Results
+                    </a>
+                    <a href="{{ url_for('logout') }}" class="btn btn-outline-danger ms-2">
+                        <i class="bi bi-box-arrow-right me-2"></i>Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Voting Guidelines -->
+        <div class="card mt-4 bg-info bg-opacity-10">
+            <div class="card-body">
+                <h6 class="card-title text-info">
+                    <i class="bi bi-info-circle me-2"></i>Voting Guidelines
+                </h6>
+                <ul class="mb-0 small">
+                    <li>You can vote only once per election</li>
+                    <li>Your vote is confidential and anonymous</li>
+                    <li>Make sure you select your preferred candidate before submitting</li>
+                    <li>Once submitted, your vote cannot be changed</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

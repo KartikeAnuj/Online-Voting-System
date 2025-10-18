@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login - Online Voting System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <!-- Admin Login Card -->
+        <div class="card">
+            <div class="card-header text-center">
+                <h4 class="mb-0"><i class="bi bi-shield-check me-2"></i>Administrator Access</h4>
+                <p class="mb-0 mt-2 text-white-50">Secure admin login portal</p>
+            </div>
+            <div class="card-body p-4">
+                <div class="text-center mb-4">
+                    <i class="bi bi-gear-fill text-primary" style="font-size: 3rem;"></i>
+                </div>
+                
+                <form action="{{ url_for('admin_login') }}" method="POST">
+                    <div class="mb-3">
+                        <label for="admin_password" class="form-label">Admin Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-key-fill"></i>
+                            </span>
+                            <input type="password" class="form-control" id="admin_password" name="admin_password" 
+                                   placeholder="Enter admin password" required>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-warning btn-lg">
+                            <i class="bi bi-shield-lock me-2"></i>Access Admin Panel
+                        </button>
+                    </div>
+                </form>
+                
+                <hr>
+                
+                <div class="text-center">
+                    <p class="mb-3 text-muted">Need to go back?</p>
+                    <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-2"></i>Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Features -->
+        <div class="card mt-4">
+            <div class="card-header text-center">
+                <h6 class="mb-0"><i class="bi bi-tools me-2"></i>Admin Capabilities</h6>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-person-plus-fill text-success me-2"></i>
+                            <small>Add new candidates</small>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-bar-chart-fill text-primary me-2"></i>
+                            <small>Monitor voting results</small>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-eye-fill text-info me-2"></i>
+                            <small>View detailed statistics</small>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-gear-fill text-warning me-2"></i>
+                            <small>Manage election settings</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo Info -->
+        <div class="card mt-4 bg-warning bg-opacity-10">
+            <div class="card-body text-center">
+                <h6 class="card-title text-warning">
+                    <i class="bi bi-info-circle me-2"></i>Demo Admin Password
+                </h6>
+                <p class="mb-0"><strong>Password:</strong> admin123</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
